@@ -16,30 +16,37 @@ clearButton.addEventListener("click", clearInputs);
 
 function calculate(event) {
   event.preventDefault();
-  getNoBetResults();
+  setNoBetResults();
+  setWinningHedgeResults(hedgeWager, odds);
+  setLosingHedgeResults(hedgeWager);
 }
 
-function getNoBetResults() {
+function setNoBetResults() {
   noBetWorstCase.innerText = "Lose " + currentTotalAtRisk.value;
   noBetBestCase.innerText = "Win " + currentTotalToWin.value;
 }
 
-function getWinningHedgeResults() {}
+function setWinningHedgeResults(riskAmount, odds) {
+  betWinBestCase.innerText =
+    getPayoutForHedgeBet(riskAmount, odds) - currentTotalAtRisk.value;
+}
 
-function getLosingHedgeResults() {}
+function setLosingHedgeResults(riskAmount) {
+  betLoseBestCase.innerText = currentTotalToWin.value - riskAmount.value;
+}
 
 function getPayoutForHedgeBet(riskAmount, odds) {
   // for Even money
-  if (odds.toLowerCase() === "even") {
-    return riskAmount;
+  if (odds.value.toLowerCase() === "even") {
+    return riskAmount.value;
   }
   // for negative odds
-  if (odds < 0) {
-    return (riskAmount / (odds / 100)) * -1;
+  if (odds.value < 0) {
+    return (riskAmount.value / (odds.value / 100)) * -1;
   }
   // for positive odds
-  if (odds > 0) {
-    return riskAmount * (odds / 100);
+  if (odds.value > 0) {
+    return riskAmount.value * (odds.value / 100);
   }
 }
 
