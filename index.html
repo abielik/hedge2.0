@@ -14,35 +14,36 @@
         <div>
             <h3>Enter Existing Wager Info Here</h3>
             <label for="current-total-at-risk">Current total at Risk:</label>
-            <input type="number" name="current-total-at-risk" id="current-total-at-risk">
+            <input type="number" name="current-total-at-risk" id="current-total-at-risk" placeholder="0">
             
             <label for="current-total-to-win">Current Total to Win:</label>
-            <input type="number" name="current-total-to-win" id="current-total-to-win">
+            <input type="number" name="current-total-to-win" id="current-total-to-win" placeholder="0">
         </div>
 
         <div>
             <h3>Enter New Wager Info Here</h3>
             <label for="hedge-wager">New Amount to Risk:</label>
-            <input type="number" name="hedge-wager" id="hedge-wager">
+            <input type="number" name="hedge-wager" id="hedge-wager" placeholder="0">
 
             <label for="odds">Odds:</label>
-            <input type="number" name="odds" id="odds">
+            <input type="number" name="odds" id="odds" placeholder="-100, 100, Even">
         </div>
-        <button type="submit">Calculate</button>
+        <button type="submit" id="calculate-button">Calculate</button>
+        <button type="button" id="clear-button">Clear</button>
     </form>
     <div>
         <p>If you do nothing...</p>
         <ul>
-            <li>Worst Case Scenario:</li>
-            <li>Best Case Scenario:</li>
+            <li>Worst Case Scenario: <span class="no-bet-worst-case"></span></li>
+            <li>Best Case Scenario: <span class="no-bet-best-case"></span></li>
         </ul>
     </div>
 
     <div>
         <p>If you bet...</p>
         <ul>
-            <li>Worst Case Scenario:</li>
-            <li>Best Case Scenario:</li>
+            <li>Worst Case Scenario: <span class="bet-worst-case"></span></li>
+            <li>Best Case Scenario: <span class="bet-best-case"></span></li>
         </ul>
     </div>
 
