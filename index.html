@@ -9,6 +9,43 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>test</h1>
+    
+    <form>
+        <div>
+            <h3>Enter Existing Wager Info Here</h3>
+            <label for="current-total-at-risk">Current total at Risk:</label>
+            <input type="number" name="current-total-at-risk" id="current-total-at-risk">
+            
+            <label for="current-total-to-win">Current Total to Win:</label>
+            <input type="number" name="current-total-to-win" id="current-total-to-win">
+        </div>
+
+        <div>
+            <h3>Enter New Wager Info Here</h3>
+            <label for="hedge-wager">New Amount to Risk:</label>
+            <input type="number" name="hedge-wager" id="hedge-wager">
+
+            <label for="odds">Odds:</label>
+            <input type="number" name="odds" id="odds">
+        </div>
+        <button type="submit">Calculate</button>
+    </form>
+    <div>
+        <p>If you do nothing...</p>
+        <ul>
+            <li>Worst Case Scenario:</li>
+            <li>Best Case Scenario:</li>
+        </ul>
+    </div>
+
+    <div>
+        <p>If you bet...</p>
+        <ul>
+            <li>Worst Case Scenario:</li>
+            <li>Best Case Scenario:</li>
+        </ul>
+    </div>
+
+
 </body>
 </html>
