@@ -14,16 +14,16 @@
         <div>
             <h3>Enter Existing Wager Info Here</h3>
             <label for="current-total-at-risk">Current total at Risk:</label>
-            <input type="number" name="current-total-at-risk" id="current-total-at-risk" placeholder="0">
+            <input type="number" name="current-total-at-risk" id="current-total-at-risk" placeholder="0" min="0">
             
             <label for="current-total-to-win">Current Total to Win:</label>
-            <input type="number" name="current-total-to-win" id="current-total-to-win" placeholder="0">
+            <input type="number" name="current-total-to-win" id="current-total-to-win" placeholder="0" min="0">
         </div>
 
         <div>
             <h3>Enter New Wager Info Here</h3>
             <label for="hedge-wager">New Amount to Risk:</label>
-            <input type="number" name="hedge-wager" id="hedge-wager" placeholder="0">
+            <input type="number" name="hedge-wager" id="hedge-wager" placeholder="0" min="0">
 
             <label for="odds">Odds:</label>
             <input type="text" name="odds" id="odds" placeholder="-100, 100, Even">
@@ -43,7 +43,7 @@
     <div>
         <p>If you hedge and win...</p>
         <ul>
-            <li>Best Case Scenario: <span class="bet-win-best-case"></span></li>
+            <li>Your Payout would be: <span class="bet-win"></span></li>
         </ul>
     </div>
 
@@ -51,7 +51,7 @@
         <p>If you hedge and lose...</p>
         <ul>
 
-            <li>Best Case Scenario: <span class="bet-lose-best-case"></span></li>
+            <li>Your Payout woud be: <span class="bet-lose"></span></li>
         </ul>
     </div>
 

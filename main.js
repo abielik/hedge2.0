@@ -6,10 +6,8 @@ const calculateButton = document.querySelector("#calculate-button");
 const clearButton = document.querySelector("#clear-button");
 const noBetWorstCase = document.querySelector(".no-bet-worst-case");
 const noBetBestCase = document.querySelector(".no-bet-best-case");
-const betWinWorstCase = document.querySelector(".bet-win-worst-case");
-const betWinBestCase = document.querySelector(".bet-win-best-case");
-const betLoseWorstCase = document.querySelector(".bet-lose-worst-case");
-const betLoseBestCase = document.querySelector(".bet-lose-best-case");
+const betWin = document.querySelector(".bet-win");
+const betLose = document.querySelector(".bet-lose");
 const hedgeCalculation = document.querySelector("#hedge-calculation");
 
 calculateButton.addEventListener("click", calculate);
@@ -19,23 +17,37 @@ hedgeWager.oninput = handleHedgeCalculationOnChange;
 
 function calculate(event) {
   event.preventDefault();
-  setNoBetResults();
-  setWinningHedgeResults(hedgeWager, odds);
-  setLosingHedgeResults(hedgeWager);
+  if (validateInputs()) {
+    setNoBetResults();
+    setWinningHedgeResults(hedgeWager, odds);
+    setLosingHedgeResults(hedgeWager);
+  }
+}
+
+function validateInputs() {
+  if (
+    hedgeWager.value < 0 ||
+    currentTotalAtRisk.value < 0 ||
+    currentTotalToWin.value < 0
+  ) {
+    alert("Some values must be greater than 0");
+    return false;
+  }
+  return true;
 }
 
 function setNoBetResults() {
-  noBetWorstCase.innerText = "Lose " + currentTotalAtRisk.value;
-  noBetBestCase.innerText = "Win " + currentTotalToWin.value;
+  noBetWorstCase.innerText = "Lose $" + currentTotalAtRisk.value;
+  noBetBestCase.innerText = "Win $" + currentTotalToWin.value;
 }
 
 function setWinningHedgeResults(riskAmount, odds) {
-  betWinBestCase.innerText =
+  betWin.innerText =
     getPayoutForHedgeBet(riskAmount, odds) - currentTotalAtRisk.value;
 }
 
 function setLosingHedgeResults(riskAmount) {
-  betLoseBestCase.innerText = currentTotalToWin.value - riskAmount.value;
+  betLose.innerText = currentTotalToWin.value - riskAmount.value;
 }
 
 function getPayoutForHedgeBet(riskAmount, odds) {
@@ -45,7 +57,7 @@ function getPayoutForHedgeBet(riskAmount, odds) {
   }
   // for negative odds
   if (odds.value < 0) {
-    return (riskAmount.value / (odds.value / 100)) * -1;
+    return (riskAmount.value / odds.value) * -100;
   }
   // for positive odds
   if (odds.value > 0) {
@@ -54,10 +66,10 @@ function getPayoutForHedgeBet(riskAmount, odds) {
 }
 
 function handleHedgeCalculationOnChange() {
-  if (!hedgeWager.value || !odds.value) {
+  if (hedgeWager.value < 1 || !odds.value) {
     return (hedgeCalculation.innerText = "");
   }
-  hedgeCalculation.innerText = `To Win: ${getPayoutForHedgeBet(
+  hedgeCalculation.innerText = `To Win: $${getPayoutForHedgeBet(
     hedgeWager,
     odds
   )}`;
@@ -70,8 +82,6 @@ function clearInputs() {
   odds.value = "";
   noBetWorstCase.innerText = "";
   noBetBestCase.innerText = "";
-  betWinWorstCase.innerText = "";
-  betWinBestCase.innerText = "";
-  betLoseWorstCase.innerText = "";
-  betLoseBestCase.innerText = "";
+  betWin.innerText = "";
+  betLose.innerText = "";
 }
