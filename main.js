@@ -6,17 +6,27 @@ const calculateButton = document.querySelector("#calculate-button");
 const clearButton = document.querySelector("#clear-button");
 const noBetWorstCase = document.querySelector(".no-bet-worst-case");
 const noBetBestCase = document.querySelector(".no-bet-best-case");
-const betWorstCase = document.querySelector(".bet-worst-case");
-const betBestCase = document.querySelector(".bet-best-case");
+const betWinWorstCase = document.querySelector(".bet-win-worst-case");
+const betWinBestCase = document.querySelector(".bet-win-best-case");
+const betLoseWorstCase = document.querySelector(".bet-lose-worst-case");
+const betLoseBestCase = document.querySelector(".bet-lose-best-case");
 
 calculateButton.addEventListener("click", calculate);
 clearButton.addEventListener("click", clearInputs);
 
 function calculate(event) {
   event.preventDefault();
+  getNoBetResults();
+}
+
+function getNoBetResults() {
   noBetWorstCase.innerText = "Lose " + currentTotalAtRisk.value;
   noBetBestCase.innerText = "Win " + currentTotalToWin.value;
 }
+
+function getWinningHedgeResults() {}
+
+function getLosingHedgeResults() {}
 
 function getPayoutForHedgeBet(riskAmount, odds) {
   // for Even money
@@ -40,4 +50,8 @@ function clearInputs() {
   odds.value = "";
   noBetWorstCase.innerText = "";
   noBetBestCase.innerText = "";
+  betWinWorstCase.innerText = "";
+  betWinBestCase.innerText = "";
+  betLoseWorstCase.innerText = "";
+  betLoseBestCase.innerText = "";
 }
