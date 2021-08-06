@@ -10,9 +10,12 @@ const betWinWorstCase = document.querySelector(".bet-win-worst-case");
 const betWinBestCase = document.querySelector(".bet-win-best-case");
 const betLoseWorstCase = document.querySelector(".bet-lose-worst-case");
 const betLoseBestCase = document.querySelector(".bet-lose-best-case");
+const hedgeCalculation = document.querySelector("#hedge-calculation");
 
 calculateButton.addEventListener("click", calculate);
 clearButton.addEventListener("click", clearInputs);
+odds.oninput = handleHedgeCalculationOnChange;
+hedgeWager.oninput = handleHedgeCalculationOnChange;
 
 function calculate(event) {
   event.preventDefault();
@@ -48,6 +51,16 @@ function getPayoutForHedgeBet(riskAmount, odds) {
   if (odds.value > 0) {
     return riskAmount.value * (odds.value / 100);
   }
+}
+
+function handleHedgeCalculationOnChange() {
+  if (!hedgeWager.value || !odds.value) {
+    return (hedgeCalculation.innerText = "");
+  }
+  hedgeCalculation.innerText = `To Win: ${getPayoutForHedgeBet(
+    hedgeWager,
+    odds
+  )}`;
 }
 
 function clearInputs() {
