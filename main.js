@@ -28,7 +28,8 @@ function validateInputs() {
   if (
     hedgeWager.value < 0 ||
     currentTotalAtRisk.value < 0 ||
-    currentTotalToWin.value < 0
+    currentTotalToWin.value < 0 ||
+    odds.value < 100
   ) {
     alert("Some values must be greater than 0");
     return false;
