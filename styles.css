@@ -70,3 +70,8 @@ label {
   margin: 10px;
   color: red;
 }
+
+#hedge-calculation {
+  color: yellowgreen;
+  font-size: 40px;
+}

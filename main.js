@@ -71,7 +71,7 @@ function handleHedgeCalculationOnChange() {
   if (hedgeWager.value < 1 || !odds.value) {
     return (hedgeCalculation.innerText = "");
   }
-  hedgeCalculation.innerText = `To Win: $${Math.round(
+  hedgeCalculation.innerText = `$${Math.round(
     getPayoutForHedgeBet(hedgeWager, odds)
   )}`;
 }
@@ -85,4 +85,5 @@ function clearInputs() {
   noBetBestCase.innerText = "";
   betWin.innerText = "";
   betLose.innerText = "";
+  handleHedgeCalculationOnChange();
 }
