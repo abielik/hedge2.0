@@ -44,7 +44,8 @@ function setNoBetResults() {
 
 function setWinningHedgeResults(riskAmount, odds) {
   betWin.innerText =
-    getPayoutForHedgeBet(riskAmount, odds) - currentTotalAtRisk.value;
+    Math.round(getPayoutForHedgeBet(riskAmount, odds)) -
+    currentTotalAtRisk.value;
 }
 
 function setLosingHedgeResults(riskAmount) {
@@ -70,9 +71,8 @@ function handleHedgeCalculationOnChange() {
   if (hedgeWager.value < 1 || !odds.value) {
     return (hedgeCalculation.innerText = "");
   }
-  hedgeCalculation.innerText = `To Win: $${getPayoutForHedgeBet(
-    hedgeWager,
-    odds
+  hedgeCalculation.innerText = `To Win: $${Math.round(
+    getPayoutForHedgeBet(hedgeWager, odds)
   )}`;
 }
 
