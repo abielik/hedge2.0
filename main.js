@@ -9,6 +9,7 @@ const noBetBestCase = document.querySelector(".no-bet-best-case");
 const betWin = document.querySelector(".bet-win");
 const betLose = document.querySelector(".bet-lose");
 const hedgeCalculation = document.querySelector("#hedge-calculation");
+const valuesWithInitialValueEmpty = document.querySelectorAll(".initial-empty");
 
 calculateButton.addEventListener("click", calculate);
 clearButton.addEventListener("click", clearInputs);
@@ -28,8 +29,7 @@ function validateInputs() {
   if (
     hedgeWager.value < 0 ||
     currentTotalAtRisk.value < 0 ||
-    currentTotalToWin.value < 0 ||
-    odds.value < 100
+    currentTotalToWin.value < 0
   ) {
     alert("Some values must be greater than 0");
     return false;
@@ -77,13 +77,10 @@ function handleHedgeCalculationOnChange() {
 }
 
 function clearInputs() {
-  currentTotalAtRisk.value = "";
-  currentTotalToWin.value = "";
-  hedgeWager.value = "";
-  odds.value = "";
-  noBetWorstCase.innerText = "";
-  noBetBestCase.innerText = "";
-  betWin.innerText = "";
-  betLose.innerText = "";
+  valuesWithInitialValueEmpty.forEach((value) => {
+    value.value = "";
+    value.innerText = "";
+  });
+
   handleHedgeCalculationOnChange();
 }
