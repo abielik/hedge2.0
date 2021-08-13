@@ -18,14 +18,14 @@ hedgeWager.oninput = handleHedgeCalculationOnChange;
 
 function calculate(event) {
   event.preventDefault();
-  if (validateInputs()) {
+  if (isValidInput()) {
     setNoBetResults();
     setWinningHedgeResults(hedgeWager, odds);
     setLosingHedgeResults(hedgeWager);
   }
 }
 
-function validateInputs() {
+function isValidInput() {
   if (
     hedgeWager.value < 0 ||
     currentTotalAtRisk.value < 0 ||
