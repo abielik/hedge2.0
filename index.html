@@ -1,65 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <script src="main.js" defer></script>
-    <title>Hedge</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styles.css">
+	<script src="main.js" defer></script>
+	<title>Hedge</title>
 </head>
+
 <body>
-    <main>
-        <form>
-            <h3>Enter Existing Wager Info Here</h3>
-            <div class="existing-wager">
-                
-                <label for="current-total-at-risk">Current at Risk:</label>
-                <input type="number" name="current-total-at-risk" id="current-total-at-risk" class="initial-empty" placeholder="0" min="0" step="10">
-                
-                <label for="current-total-to-win">Current to Win:</label>
-                <input type="number" name="current-total-to-win" id="current-total-to-win" class="initial-empty" placeholder="0" min="0">
-            </div>
-
-            <h3>Enter New Wager Info Here</h3>
-            <div class="new-wager">
-              
-                <label for="hedge-wager">New Amount to Risk:</label>
-                <input type="number" name="hedge-wager" id="hedge-wager" class="initial-empty" placeholder="0" min="0" step="10">
-
-                <label for="odds">Odds:</label>
-                <input type="text" name="odds" id="odds" class="initial-empty" placeholder="even, -120">
-                <span id="hedge-to-win">To Win: <span id="hedge-calculation"></span></span>
-            </div>
-            <div class="buttons">
-                <button type="submit" id="calculate-button">Calculate</button>
-                <button type="button" id="clear-button">Clear</button>
-            </div>
-
-        </form>
-        <div>
-            <p>If you do nothing...</p>
-            <ul>
-                <li>Worst Case Scenario: <span class="no-bet-worst-case initial-empty"></span></li>
-                <li>Best Case Scenario: <span class="no-bet-best-case initial-empty"></span></li>
-            </ul>
-        </div>
-
-        <div>
-            <p>If you hedge and win...</p>
-            <ul>
-                <li>Your Payout would be: <span class="bet-win initial-empty"></span></li>
-            </ul>
-        </div>
-
-        <div>
-            <p>If you hedge and lose...</p>
-            <ul>
-
-                <li>Your Payout woud be: <span class="bet-lose initial-empty"></span></li>
-            </ul>
-        </div>
-    </main>
-
+	<main>
+		<form>
+			<div class="existing-wager-container">
+				<h2>Enter Existing Wager Info</h2>
+				<div class="current-total-at-risk-wrapper">
+					<label for="current-total-at-risk">Current at Risk:</label>
+					<input type="number" name="current-total-at-risk" id="current-total-at-risk" class="initial-empty" placeholder="0" min="0" step="10">
+				</div>
+				<div class="current-total-to-win-wrapper">
+					<label for="current-total-to-win">Current to Win:</label>
+					<input type="number" name="current-total-to-win" id="current-total-to-win" class="initial-empty" placeholder="0" min="0">
+				</div>
+			</div>
+			<div class="new-wager-container">
+				<h2>Enter New Wager Info</h2>
+				<div class="hedge-wager-wrapper">
+					<label for="hedge-wager">New Amount to Risk:</label>
+					<input type="number" name="hedge-wager" id="hedge-wager" class="initial-empty" placeholder="0" min="0" step="10">
+				</div>
+				<div class="odds-wrapper">
+					<label for="odds">Odds:</label>
+					<input type="text" name="odds" id="odds" class="initial-empty" placeholder="even, -120">
+					<div class="hedge-to-win">To Win: <span class="hedge-calculation"></span></div>
+				</div>
+			</div>
+			<div class="buttons-wrapper">
+				<button type="submit" class="calculate-button">Calculate</button>
+				<button type="button" class="clear-button">Clear</button>
+			</div>
+		</form>
+		<div>
+			<p>If you do nothing...</p>
+			<ul>
+				<li>Worst Case Scenario: <span class="no-bet-worst-case initial-empty"></span></li>
+				<li>Best Case Scenario: <span class="no-bet-best-case initial-empty"></span></li>
+			</ul>
+		</div>
+		<div>
+			<p>If you hedge and win...</p>
+			<ul>
+				<li>Your Payout would be: <span class="bet-win initial-empty"></span></li>
+			</ul>
+		</div>
+		<div>
+			<p>If you hedge and lose...</p>
+			<ul>
+				<li>Your Payout woud be: <span class="bet-lose initial-empty"></span></li>
+			</ul>
+		</div>
+	</main>
 </body>
 </html>

@@ -2,13 +2,13 @@ const currentTotalAtRisk = document.querySelector("#current-total-at-risk");
 const currentTotalToWin = document.querySelector("#current-total-to-win");
 const hedgeWager = document.querySelector("#hedge-wager");
 const odds = document.querySelector("#odds");
-const calculateButton = document.querySelector("#calculate-button");
-const clearButton = document.querySelector("#clear-button");
+const calculateButton = document.querySelector(".calculate-button");
+const clearButton = document.querySelector(".clear-button");
 const noBetWorstCase = document.querySelector(".no-bet-worst-case");
 const noBetBestCase = document.querySelector(".no-bet-best-case");
 const betWin = document.querySelector(".bet-win");
 const betLose = document.querySelector(".bet-lose");
-const hedgeCalculation = document.querySelector("#hedge-calculation");
+const hedgeCalculation = document.querySelector(".hedge-calculation");
 const valuesWithInitialValueEmpty = document.querySelectorAll(".initial-empty");
 
 calculateButton.addEventListener("click", calculate);
