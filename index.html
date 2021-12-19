@@ -12,17 +12,6 @@
 <body>
 	<main>
 		<form>
-			<div class="existing-wager-container">
-				<h2>Enter Existing Wager Info</h2>
-				<div class="current-total-at-risk-wrapper">
-					<label for="current-total-at-risk">Current at Risk:</label>
-					<input type="number" name="current-total-at-risk" id="current-total-at-risk" class="initial-empty" placeholder="0" min="0" step="10">
-				</div>
-				<div class="current-total-to-win-wrapper">
-					<label for="current-total-to-win">Current to Win:</label>
-					<input type="number" name="current-total-to-win" id="current-total-to-win" class="initial-empty" placeholder="0" min="0">
-				</div>
-			</div>
 			<div class="new-wager-container">
 				<h2>Enter New Wager Info</h2>
 				<div class="hedge-wager-wrapper">
@@ -35,29 +24,38 @@
 					<div class="hedge-to-win">To Win: <span class="hedge-calculation"></span></div>
 				</div>
 			</div>
+			<div class="existing-wager-container hidden">
+				<h2>Enter Existing Wager Info</h2>
+				<div class="current-total-at-risk-wrapper">
+					<label for="current-total-at-risk">Current at Risk:</label>
+					<input type="number" name="current-total-at-risk" id="current-total-at-risk" class="initial-empty" placeholder="0" min="0" step="10">
+				</div>
+				<div class="current-total-to-win-wrapper">
+					<label for="current-total-to-win">Current to Win:</label>
+					<input type="number" name="current-total-to-win" id="current-total-to-win" class="initial-empty" placeholder="0" min="0">
+				</div>
+			</div>
 			<div class="buttons-wrapper">
-				<button type="submit" class="calculate-button">Calculate</button>
-				<button type="button" class="clear-button">Clear</button>
+				<button type="submit" class="calculate-button" data-action="calculate button">Calculate</button>
+				<button type="button" class="clear-button" data-action="clear button">Clear</button>
 			</div>
 		</form>
-		<div>
-			<p>If you do nothing...</p>
-			<ul>
-				<li>Worst Case Scenario: <span class="no-bet-worst-case initial-empty"></span></li>
-				<li>Best Case Scenario: <span class="no-bet-best-case initial-empty"></span></li>
-			</ul>
-		</div>
-		<div>
-			<p>If you hedge and win...</p>
-			<ul>
-				<li>Your Payout would be: <span class="bet-win initial-empty"></span></li>
-			</ul>
-		</div>
-		<div>
-			<p>If you hedge and lose...</p>
-			<ul>
-				<li>Your Payout woud be: <span class="bet-lose initial-empty"></span></li>
-			</ul>
+		<div class="scenarios-container">
+			<div class="scenario scenario-do-nothing">
+				<h3>If you do nothing...</h3>
+				<p>Worst case scenario: <span class="no-bet-worst-case initial-empty"></span></p>
+				<p>Best case scenario: <span class="no-bet-best-case initial-empty"></span></p>
+			</div>
+			<div class="divider"></div>
+			<div class="scenario scenario-hedge-win">
+				<h3>If you hedge and win...</h3>
+				<p>Your payout would be: <span class="bet-win initial-empty"></span></p>
+			</div>
+			<div class="divider"></div>
+			<div class="scenario scenario-hedge-lose">
+				<h3>If you hedge and lose...</h3>
+				<p>Your payout woud be: <span class="bet-lose initial-empty"></span></p>
+			</div>
 		</div>
 	</main>
 </body>

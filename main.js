@@ -2,17 +2,24 @@ const currentTotalAtRisk = document.querySelector("#current-total-at-risk");
 const currentTotalToWin = document.querySelector("#current-total-to-win");
 const hedgeWager = document.querySelector("#hedge-wager");
 const odds = document.querySelector("#odds");
-const calculateButton = document.querySelector(".calculate-button");
-const clearButton = document.querySelector(".clear-button");
 const noBetWorstCase = document.querySelector(".no-bet-worst-case");
 const noBetBestCase = document.querySelector(".no-bet-best-case");
 const betWin = document.querySelector(".bet-win");
 const betLose = document.querySelector(".bet-lose");
 const hedgeCalculation = document.querySelector(".hedge-calculation");
 const valuesWithInitialValueEmpty = document.querySelectorAll(".initial-empty");
+const buttons = document.querySelectorAll("button");
 
-calculateButton.addEventListener("click", calculate);
-clearButton.addEventListener("click", clearInputs);
+buttons.forEach((button) => {
+  if (button.dataset.action === "calculate button") {
+    button.addEventListener("click", calculate);
+  }
+
+  if (button.dataset.action === "clear button") {
+    button.addEventListener("click", clearInputs);
+  }
+});
+
 odds.oninput = handleHedgeCalculationOnChange;
 hedgeWager.oninput = handleHedgeCalculationOnChange;
 
@@ -25,7 +32,9 @@ function calculate(event) {
   }
 }
 
+// Check for valid input
 function isValidInput() {
+  // IF either wager, current at risk amount, or current total to win is negative, return false
   if (
     hedgeWager.value < 0 ||
     currentTotalAtRisk.value < 0 ||
@@ -37,11 +46,11 @@ function isValidInput() {
   return true;
 }
 
+// Set text of "no bet" worst and best case scenarios
 function setNoBetResults() {
   noBetWorstCase.innerText = "Lose $" + currentTotalAtRisk.value;
   noBetBestCase.innerText = "Win $" + currentTotalToWin.value;
 }
-
 function setWinningHedgeResults(riskAmount, odds) {
   betWin.innerText =
     Math.round(getPayoutForHedgeBet(riskAmount, odds)) -
